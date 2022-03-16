@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Bakery {
-    final static List<String> breadShelf = new LinkedList<>();;
+    final static List<String> breadShelf = new LinkedList<>();
     public static void main(String[] args) {
 
         Baker baker = new Baker(true);

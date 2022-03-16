@@ -24,7 +24,8 @@ public class ReadWriteFromFile {
             log.info("File :  {}   Content : {}", filepath.getFileName(),content);
         }
         catch (InterruptedException | IOException e){
-            log.error("Read thread been interrupted " + e);
+            log.error("Exception while reading the file: {}" + filepath.getFileName());
+            e.printStackTrace();
         }
         finally {
             lock.unlockRead();
@@ -36,10 +37,11 @@ public class ReadWriteFromFile {
         try {
             lock.lockWrite();
             log.info("WriteLock acquired. Started writing to file :  {}", filepath.getFileName());
-            Files.writeString(filepath , "Line added successfully", StandardOpenOption.APPEND);
+            Files.writeString(filepath , text, StandardOpenOption.APPEND);
         }
-        catch (InterruptedException | IOException e){
-            log.error("Write thread been interrupted " + e);
+        catch (IOException e){
+            log.error("Exception while writing to the file: {}" + filepath.getFileName());
+            e.printStackTrace();
         }
         finally {
             lock.unlockWrite();

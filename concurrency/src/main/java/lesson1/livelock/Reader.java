@@ -25,6 +25,8 @@ public class Reader {
                 try {
                     wait(1000);
                 } catch (InterruptedException e) {
+                    log.info("{} : I'm tired of reading going home ", name);
+                    reading = false;
                     e.printStackTrace();
                 }
                 continue;
